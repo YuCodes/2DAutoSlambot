@@ -19,7 +19,7 @@ catkin_create pkg gslambot\
 cd gslambot
 
 //After making the catkin package you can clone this repo inside the package.\
-git clone  https://github.com/YuCodes/2DAutoSlambot/edit/master/README.md
+git clone  https://github.com/YuCodes/2DAutoSlambot/edit/master/README.md \
 catkin_make
 
 //To source your workspace folder if you haven't added in bashrc\
