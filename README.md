@@ -8,11 +8,21 @@ sudo apt-get install ros-kinetic-amcl
 sudo apt-get install ros-kinetic-gmapping
 sudo apt-get install ros-kinetic-navigation
 
-create a catkin package nameed gslambot
 
-After making the catkin package you can clone this repo inside the package.
+//create a catkin_workspace
+mkdir -p 2DAutoSlambot/src
+cd 2DAutoSlambot
 catkin_make
-source devel/setup.bash to source your workspace folder if you haven't added in bashrc
+cd src
+catkin_create pkg gslambot
+cd gslambot
+
+//After making the catkin package you can clone this repo inside the package.
+git clone  https://github.com/YuCodes/2DAutoSlambot/edit/master/README.md
+catkin_make
+
+//To source your workspace folder if you haven't added in bashrc
+source devel/setup.bash 
 
 you can launch the launch files given in the launch folder
 roslaunch gslambot gmaprobot.launch model:=path to the /urdf/gmapbot.xacro file
