@@ -1,5 +1,5 @@
-# 2DAutoSlambot
-2D Slam Bot , which uses skid steer drive, gmapping and amcl for mapping and navigation
+# 2D Autonomous Slam Rover
+2D Slam Bot , which uses skid steer drive, gmapping and adaptive monte carlo localization for mapping and navigation
 
 you will need following dependancies to successfully run the launch files
 
