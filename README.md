@@ -26,7 +26,7 @@ source devel/setup.bash
 you can launch the launch files given in the launch folder
 roslaunch gslambot gmaprobot.launch model:=path to the /urdf/gmapbot.xacro file
 
-Move the robot using the keyboard .. you will want to run the following node
+If you want to move the robot using the keyboard .. you will want to run the following node
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
  
 if you want the bot to use slam and navigate use these two files
