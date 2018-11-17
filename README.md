@@ -8,7 +8,6 @@ sudo apt-get install ros-kinetic-amcl
 sudo apt-get install ros-kinetic-gmapping
 sudo apt-get install ros-kinetic-navigation
 
-
 //create a catkin_workspace
 mkdir -p 2DAutoSlambot/src
 cd 2DAutoSlambot
