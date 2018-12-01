@@ -36,3 +36,4 @@ roslaunch gslambot move_base.launch
 
 you can add a camera to the rviz as well if you want the output image to be displayed in the rviz
  
+<a href="https://imgflip.com/gif/2nx2yh"><img src="https://i.imgflip.com/2nx2yh.gif" title="made at imgflip.com"/></a>
