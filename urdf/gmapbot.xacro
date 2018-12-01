@@ -220,7 +220,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://chapter7_tutorials/meshes/hokuyo.dae"/>
+        <mesh filename="package://gslambot/meshes/hokuyo.dae"/>
       </geometry>
     </visual>
 
