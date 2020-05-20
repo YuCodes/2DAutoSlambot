@@ -7,8 +7,26 @@
     <include>
       <uri>model://sun</uri>
     </include>
-    <include>
-      <uri>model://WareHouse</uri>
-    </include>
+    <model name="WareHouse">
+      <static>true</static>
+      <pose>0 0 2 -1.57079632679 0 0</pose> <!-- -1.57.. = - 1/2 π -->
+      <link name="walls">
+        <collision name="collision">
+          <geometry>
+            <mesh>
+              <uri>model://Warehouse.dae</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://Warehouse.dae</uri>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+      </link>
+    </model>
   </world>
 </sdf>
