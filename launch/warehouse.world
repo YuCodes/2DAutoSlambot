@@ -9,7 +9,7 @@
     </include>
     <model name="WareHouse">
       <static>true</static>
-      <pose>0 0 1.25 -1.57079632679 0 0</pose> <!-- -1.57.. = - 1/2 π -->
+      <pose>0 -10 1.25 -1.57079632679 0 0</pose> <!-- -1.57.. = - 1/2 π -->
       <link name="walls">
         <collision name="collision">
           <geometry>
