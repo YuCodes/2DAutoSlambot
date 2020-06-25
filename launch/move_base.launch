@@ -4,6 +4,9 @@
 
   <!-- Run the map server -->
    <node name="map_server" pkg="map_server" type="map_server" args="$(find gslambot)/maps/warehouse.yaml" output="screen"/>
+   <node name="vector_map" pkg="lexx_auto_launch" type="vector_map.py" output="screen">
+       <param name="osm_file_path" value="$(find gslambot)/maps/lanelet2.osm" />
+   </node>
 
   <include file="$(find amcl)/examples/amcl_diff.launch" >
   </include> 
