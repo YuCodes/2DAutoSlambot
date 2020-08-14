@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <launch>
   <!-- Run the map server -->
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find gslambot)/maps/room_ok.yaml" output="screen"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find gslambot)/maps/room_sim.yaml" output="screen"/>
   <node name="vector_map" pkg="vector_map" type="vector_map.py" output="screen">
        <param name="osm_file_path" value="$(find gslambot)/maps/room_ok.osm" />
   </node>
 
    <include file="$(find amcl)/examples/amcl_diff.launch" >
   </include> 
-
+  
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <param name="controller_frequency" value="10.0"/>
     <param name="controller_patiente" value="15.0"/>
