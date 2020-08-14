@@ -55,7 +55,7 @@
     <nd ref='-131857' />
     <nd ref='-131858' />
     <nd ref='-131855' />
-    <tag k='AMR' v='0' />
+    <tag k='AGV' v='0' />
   </way>
   <way id='-100003' action='modify' visible='true'>
     <nd ref='-132078' />
@@ -71,6 +71,6 @@
     <nd ref='-132149' />
     <nd ref='-132150' />
     <nd ref='-132147' />
-    <tag k='AGV' v='0' />
+    <tag k='AMR' v='0' />
   </way>
 </osm>
