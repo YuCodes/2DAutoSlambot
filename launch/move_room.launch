@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find gslambot)/maps/room_ok.yaml" output="screen"/>
+  <node name="vector_map" pkg="vector_map" type="vector_map.py" output="screen">
+  <param name="osm_file_path" value="$(find gslambot)/maps/room_ok.osm" />
+  </node>
+
+  <!-- Run rplidar_ros -->
+  <include file="$(find rplidar_ros)/launch/test_rplidar.launch" />
+  
+  <!-- Run amcl -->
+  <include file="$(find amcl)/examples/amcl_diff.launch" >
+  </include>
+
+  <node pkg="tf" type="static_transform_publisher" name="link0" args="0 0 0 0 0 0 map odom 100" />
+  <!--node pkg="tf" type="static_transform_publisher" name="link1" args="0 0 0 0 0 0 odom base_footprint 100" />
+  <node pkg="tf" type="static_transform_publisher" name="link2" args="0 0 0 0 0 0 base_footprint base_link 100" /-->
+  <node pkg="tf" type="static_transform_publisher" name="link3" args="0 0 0 0 0 0 base_link laser 100" />
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node>
+  
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen" >
+    <param name="publish_frequency" type="double" value="50.0" />
+  </node>
+  
+  <!--node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+  <param name="controller_frequency" value="10.0"/>
+  <param name="controller_patiente" value="15.0"/>
+  <rosparam file="$(find gslambot)/launch/costmap_common_params.yaml" command="load" ns="global_costmap" />
+  <rosparam file="$(find gslambot)/launch/costmap_common_params.yaml" command="load" ns="local_costmap" />
+  <rosparam file="$(find gslambot)/launch/local_costmap_params.yaml" command="load" />
+  <rosparam file="$(find gslambot)/launch/global_costmap_params.yaml" command="load" />
+  <rosparam file="$(find gslambot)/launch/base_local_planner_params.yaml" command="load" />
+  </node-->
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find gslambot)/launch/navigation.rviz" />
+</launch>
