@@ -1,17 +1,28 @@
 <?xml version="1.0"?>
 <launch>
   <!-- Run the map server -->
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find gslambot)/maps/room_sim.yaml" output="screen"/>
-  <node name="vector_map" pkg="vector_map" type="vector_map.py" output="screen">
-       <param name="osm_file_path" value="$(find gslambot)/maps/room_ok.osm" />
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find gslambot)/maps/room_ok.yaml" output="screen"/>
+  <node name="vector_map" pkg="vector_map" type="vector_map_test.py" output="screen">
+       <!--param name="osm_file_path" value="$(find gslambot)/maps/room_ok.osm" /-->     
+       <param name="data_file_path" value="$(find vector_map)/scripts/exdata.txt" /> 
+       <param name="name_file_path" value="$(find vector_map)/scripts/exarea_name.txt" />
   </node>
 
-   <include file="$(find amcl)/examples/amcl_diff.launch" >
-  </include> 
-  
+  <!-- Run amcl -->
+  <include file="$(find amcl)/examples/amcl_diff.launch" >
+  </include>
+
+  <node name="goal_pose_list_pub" pkg="goal_pose_list_pub" type="goal_pose_list_publisher.py" output="screen">
+       <param name="name_file_path" value="$(find vector_map)/scripts/exarea_name.txt" />
+  </node>
+
+  <node name="goal_pose_pub" pkg="goal_pose_pub" type="goal_pose_publisher.py" output="screen"/>
+    
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <param name="controller_frequency" value="10.0"/>
     <param name="controller_patiente" value="15.0"/>
+    <param name="xy_goal_tolerance" value='0.30'/> 
+    <param name="yaw_goal_tolerance" value='0.10'/>
     <rosparam file="$(find gslambot)/launch/costmap_common_params.yaml" command="load" ns="global_costmap" />
     <rosparam file="$(find gslambot)/launch/costmap_common_params.yaml" command="load" ns="local_costmap" />
     <rosparam file="$(find gslambot)/launch/local_costmap_params.yaml" command="load" />
@@ -19,5 +30,6 @@
     <rosparam file="$(find gslambot)/launch/base_local_planner_params.yaml" command="load" />
   </node>
 
+  
 
 </launch>
