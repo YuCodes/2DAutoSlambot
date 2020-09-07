@@ -6,6 +6,8 @@
   <node name="vector_map" pkg="vector_map" type="vector_map_test.py" output="screen">    
        <param name="data_file_path" value="$(find vector_map)/scripts/exdata.txt" /> 
        <param name="name_file_path" value="$(find vector_map)/scripts/exarea_name.txt" /> 
+       <param name="yaml_file_path" value="$(find gslambot)/maps/room_ok.yaml" />
+       <param name="map_file_path" value="$(find gslambot)maps/room_ok.pgm" />
   </node>
 
   <!-- Run lidar-->
