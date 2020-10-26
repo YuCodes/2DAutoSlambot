@@ -1,8 +1,12 @@
 global_costmap:
   plugins: 
     - {name: static_layer, type: "costmap_2d::StaticLayer"}
-    - {name: offlimit_layer, type: "costmap_2d::OfflimitLayer"}
+    - {name: vector_layer, type: "costmap_2d::StaticLayer"}
   global_frame: map
   robot_base_frame: base_footprint
   update_frequency: 1.0
-  static_map: true
+  static_layer:
+    map_topic: "map"
+  vector_layer:
+    map_topic: "vector_map"
+    use_maximum: true
