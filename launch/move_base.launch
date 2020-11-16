@@ -27,6 +27,10 @@
     <param name="y_goal_tolerance" value="0.30" />
     <param name="yaw_goal_tolerance" value='0.10'/>
 
+    <!-- Hybrid Astar for global path planning -->
+    <!-- <param name="base_global_planner" value="hybrid_astar_pluginlib/HybridAstarPluginlib"/>
+    <rosparam file="$(find hybrid_astar_pluginlib)/config/global_hybrid_astar_planner_params.yaml" command="load"/> -->
+
     <rosparam file="$(find gslambot)/launch/costmap_common_params.yaml" command="load" ns="global_costmap" />
     <rosparam file="$(find gslambot)/launch/global_costmap_params.yaml" command="load" />
 
