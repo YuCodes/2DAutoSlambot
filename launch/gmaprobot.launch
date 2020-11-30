@@ -2,9 +2,8 @@
 <launch>
     <param name="/use_sim_time" value="true" />
 
-
   <include file="$(find gslambot)/launch/warehouse_world.launch"/>
-  <arg name="model" />
+  <arg name="model" default="$(find gslambot)/urdf/gmapbot.xacro"/>
   <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
 
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node>
