@@ -26,7 +26,7 @@
     <param name="x_goal_tolerance" value="0.30" />
     <param name="y_goal_tolerance" value="0.30" />
     <param name="yaw_goal_tolerance" value='0.10'/>
-
+    
     <!-- Hybrid Astar for global path planning -->
     <!-- <param name="base_global_planner" value="hybrid_astar_pluginlib/HybridAstarPluginlib"/>
     <rosparam file="$(find hybrid_astar_pluginlib)/config/global_hybrid_astar_planner_params.yaml" command="load"/> -->
@@ -40,4 +40,15 @@
     <rosparam file="$(find gslambot)/launch/base_local_planner_params.yaml" command="load" />
   </node>
 
+  <!-- Run the object classifier -->
+  <node name="vector_map_obj" pkg="vector_map" type="vector_map_test.py" output="screen">
+    <param name="data_file_path" value="$(find vector_map)/scripts/data.txt" />
+    <param name="name_file_path" value="$(find vector_map)/scripts/area_name.txt" />
+    <param name="yaml_file_path" value="$(find gslambot)/maps/room_ok.yaml" />
+    <param name="map_file_path" value="$(find gslambot)/maps/room_ok.pgm" />
+    <remap from="/robot_area" to="scanned_area"/>
+    <remap from="/vector_map" to="unused_random_name_aaaaa"/>
+    <remap from="/amcl_pose" to="scan_pose"/>
+  </node>
+  <node name="object_classifier" pkg="costmap_2d" type="object_classifier_scan" output="screen"/>
 </launch>
