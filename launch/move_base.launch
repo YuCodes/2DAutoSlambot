@@ -50,5 +50,5 @@
     <remap from="/vector_map" to="unused_random_name_aaaaa"/>
     <remap from="/amcl_pose" to="scan_pose"/>
   </node>
-  <node name="object_classifier" pkg="costmap_2d" type="object_classifier_scan" output="screen"/>
+  <node name="object_classifier" pkg="costmap_2d" type="object_classifier" output="screen"/>
 </launch>
