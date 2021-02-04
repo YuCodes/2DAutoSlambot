@@ -52,5 +52,7 @@
   </node>
 
   <!-- Run the object classifier -->
-  <node name="object_classifier" pkg="costmap_2d" type="object_classifier" output="screen"/>
+  <node name="object_classifier" pkg="costmap_2d" type="object_classifier" output="screen">
+  </node>
+  <param name="scan_frame_name" value="hokuyo_link" />
 </launch>
