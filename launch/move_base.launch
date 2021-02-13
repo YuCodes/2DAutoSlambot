@@ -20,16 +20,27 @@
   <node name="goal_pose_pub" pkg="demo" type="goal_pose_publisher.py" output="screen"/>
   -->
 
+  <!-- Run Occupancy Check-->
+  <!--
+  <node pkg="occupancy_check" type="occupancy_check" name="occupancy_check" output="screen">
+    <rosparam command="load" file="$(find lexx_auto_launch)/maps/office_v3.yaml" />
+    <param name="data_file" value="$(find lexx_auto_launch)/config/data_for_v3.txt" />
+    <param name="name_file" value="$(find lexx_auto_launch)/config/area_name_for_v3.txt" />
+  </node>
+  -->
+
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <param name="controller_frequency" value="10.0"/>
     <param name="controller_patiente" value="15.0"/>
     <param name="x_goal_tolerance" value="0.30" />
     <param name="y_goal_tolerance" value="0.30" />
     <param name="yaw_goal_tolerance" value='0.10'/>
-
+    
     <!-- Hybrid Astar for global path planning -->
-    <!-- <param name="base_global_planner" value="hybrid_astar_pluginlib/HybridAstarPluginlib"/>
-    <rosparam file="$(find hybrid_astar_pluginlib)/config/global_hybrid_astar_planner_params.yaml" command="load"/> -->
+    <!--
+    <param name="base_global_planner" value="hybrid_astar_pluginlib/HybridAstarPluginlib"/>
+    <rosparam file="$(find hybrid_astar_pluginlib)/config/global_hybrid_astar_planner_params.yaml" command="load"/>
+    -->
 
     <rosparam file="$(find gslambot)/launch/costmap_common_params.yaml" command="load" ns="global_costmap" />
     <rosparam file="$(find gslambot)/launch/global_costmap_params.yaml" command="load" />
@@ -40,4 +51,8 @@
     <rosparam file="$(find gslambot)/launch/base_local_planner_params.yaml" command="load" />
   </node>
 
+  <!-- Run the object classifier -->
+  <node name="object_classifier" pkg="costmap_2d" type="object_classifier" output="screen">
+  </node>
+  <param name="scan_frame_name" value="hokuyo_link" />
 </launch>
