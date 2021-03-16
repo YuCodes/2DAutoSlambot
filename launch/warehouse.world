@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://office_room</uri>
+    </include>
+    <!--
+    <model name="WareHouse">
+      <static>true</static>
+      <pose>0 -10 1.25 -1.57079632679 0 0</pose> <!-- -1.57.. = - 1/2 π --><!--
+      <link name="walls">
+        <collision name="collision">
+          <geometry>
+            <mesh>
+              <uri>model://Warehouse.dae</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://Warehouse.dae</uri>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+      </link>
+    </model>
+    -->
+  </world>
+</sdf>
