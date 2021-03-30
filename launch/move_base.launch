@@ -2,23 +2,21 @@
 <launch>
   <!-- Run the map server -->
   <node name="map_server" pkg="map_server" type="map_server" args="$(find gslambot)/maps/room_ok.yaml" output="screen"/>
-  <node name="vector_map" pkg="vector_map" type="vector_map_test.py" output="screen">
-    <param name="data_file_path" value="$(find vector_map)/scripts/data.txt" />
-    <param name="name_file_path" value="$(find vector_map)/scripts/area_name.txt" />
-    <param name="yaml_file_path" value="$(find gslambot)/maps/room_ok.yaml" />
-    <param name="map_file_path" value="$(find gslambot)/maps/room_ok.pgm" />
+  <node name="vector_map" pkg="vector_map" type="vector_map.py" output="screen">
+    <param name="osm_file_path" value="$(find lexx_auto_launch)/maps/room_ok/room_ok.osn" />
+    <param name="yaml_file_path" value="$(find lexx_auto_launch)/maps/room_ok/room_ok.yaml" />
+    <param name="map_file_path" value="$(find lexx_auto_launch)/maps/room_ok/room_ok.pgm" />
   </node>
 
   <!-- Run amcl -->
   <include file="$(find amcl)/examples/amcl_diff.launch" >
   </include>
 
-  <!--
-  <node name="goal_pose_list_pub" pkg="goal_pose_list_pub" type="goal_pose_list_publisher.py" output="screen">
-    <param name="name_file_path" value="$(find vector_map)/scripts/exarea_name.txt" />
+  <node name="goal_pose_list_pub" pkg="goal_pose_list_pub" type="goal_pose_list_publisher_test.py" output="screen">
+    <param name="osm_file_path" value="$(find lexx_auto_launch)/maps/room_ok/room_ok.osn" />
+    <param name="yaml_file_path" value="$(find lexx_auto_launch)/maps/room_ok/room_ok.yaml" />
+    <param name="map_file_path" value="$(find lexx_auto_launch)/maps/room_ok/room_ok.pgm" />
   </node>
-  <node name="goal_pose_pub" pkg="demo" type="goal_pose_publisher.py" output="screen"/>
-  -->
 
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <param name="controller_frequency" value="10.0"/>
