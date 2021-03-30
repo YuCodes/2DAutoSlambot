@@ -4,7 +4,7 @@
   <node name="map_server" pkg="map_server" type="map_server" args="$(find gslambot)/maps/room_ok.yaml" output="screen"/>
 
   <node name="vector_map" pkg="vector_map" type="vector_map.py" output="screen">
-    <param name="osm_file_path" value="$(find lexx_auto_launch)/maps/room_ok/room_ok.osn" />
+    <param name="osm_file_path" value="$(find lexx_auto_launch)/maps/room_ok/room_ok.osm" />
     <param name="yaml_file_path" value="$(find lexx_auto_launch)/maps/room_ok/room_ok.yaml" />
     <param name="map_file_path" value="$(find lexx_auto_launch)/maps/room_ok/room_ok.pgm" />
   </node>
@@ -19,8 +19,8 @@
   <include file="$(find amcl)/examples/amcl_diff.launch" >
   </include>
 
-  <node name="goal_pose_list_pub" pkg="goal_pose_list_pub" type="goal_pose_list_publisher_test.py" output="screen">
-    <param name="osm_file_path" value="$(find lexx_auto_launch)/maps/room_ok/room_ok.osn" />
+  <node name="goal_pose_list_pub" pkg="goal_pose_list_pub" type="goal_pose_list_publisher.py" output="screen">
+    <param name="osm_file_path" value="$(find lexx_auto_launch)/maps/room_ok/room_ok.osm" />
     <param name="yaml_file_path" value="$(find lexx_auto_launch)/maps/room_ok/room_ok.yaml" />
     <param name="map_file_path" value="$(find lexx_auto_launch)/maps/room_ok/room_ok.pgm" />
   </node>
