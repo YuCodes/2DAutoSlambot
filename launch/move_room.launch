@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <!-- Run the map server -->
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find gslambot)/maps/room_ok.yaml" output="screen"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find lexx_auto_launch)/maps/room_ok/room_ok.yaml" output="screen"/>
 
   <node name="vector_map" pkg="vector_map" type="vector_map.py" output="screen">
     <param name="osm_file_path" value="$(find lexx_auto_launch)/maps/room_ok/room_ok.osm" />
